@@ -1,0 +1,91 @@
+// Abstraction: Employee is an abstract class that provides a common interface for different types of employees
+abstract class Employee {
+    protected String name;
+    protected int age;
+    
+    public Employee(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Encapsulation: Getters and setters for the name and age fields
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    // Abstraction: Abstract method to calculate the monthly salary of an employee
+    abstract double calculateSalary();
+}
+
+// Inheritance: FullTimeEmployee is a subclass of Employee, inheriting its properties and methods
+class FullTimeEmployee extends Employee {
+    private double monthlySalary;
+    
+    public FullTimeEmployee(String name, int age, double monthlySalary) {
+        super(name, age);
+        this.monthlySalary = monthlySalary;
+    }
+    
+    // Polymorphism: The calculateSalary method is overridden from the base class Employee
+    
+    @Override
+    double calculateSalary() {
+        return monthlySalary;
+    }
+}
+
+// Inheritance: PartTimeEmployee is a subclass of Employee, inheriting its properties and methods
+class PartTimeEmployee extends Employee {
+    private double hourlyRate;
+    private int hoursWorked;
+    
+    public PartTimeEmployee(String name, int age, double hourlyRate, int hoursWorked) {
+        super(name, age);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+    
+    // Polymorphism: The calculateSalary method is overridden from the base class Employee
+    
+    @Override
+    double calculateSalary() {
+        return hourlyRate * hoursWorked;
+    }
+}
+
+// Encapsulation: The main class encapsulates the program logic
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of different types of employees
+        
+        FullTimeEmployee fullTimeEmployee = new FullTimeEmployee("John Doe", 30, 5000);
+        PartTimeEmployee partTimeEmployee = new PartTimeEmployee("Jane Smith", 25, 20, 40);
+        
+        // Polymorphism: The objects are treated as instances of their base class
+        
+        Employee employee1 = fullTimeEmployee;
+        Employee employee2 = partTimeEmployee;
+        
+        // Polymorphism: The same method is called on different objects, resulting in different behavior
+        
+        double salary1 = employee1.calculateSalary();
+        double salary2 = employee2.calculateSalary();
+        
+        System.out.println("Salary of " + fullTimeEmployee.getName() + ": $" + salary1);
+        System.out.println("Salary of " + partTimeEmployee.getName() + ": $" + salary2);
+    }
+}

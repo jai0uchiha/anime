@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+                  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("pexels-felix-mittermeier-956981.jpg");
+                  background-size: cover;
+		}
+		form {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			margin: 20px auto;
+			max-width: 500px;
+		}
+		input[type="text"], input[type="email"], input[type="password"] {
+			display: block;
+			margin-bottom: 10px;
+			width: 90%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+		.form-popup {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 200px;
+			padding: 10px;
+			text-align: center;
+			background-color: #4CAF50;
+			color: #fff;
+			border-radius: 5px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="POST" onsubmit="showPopup(); return false;">
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+		<input type="submit" value="Signup">
+	</form>
+
+	<div class="form-popup" id="successPopup">
+		<p id="successMessage"></p>
+		<span class="close-button" onclick="closePopup()"></span>
+	</div>
+
+	<script>
+		function showPopup() {
+			var email = document.getElementById("email").value;
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var successMessage = document.getElementById("successMessage");
+
+			successMessage.innerHTML = "Signup Successful";
+
+			var popup = document.getElementById("successPopup");
+			popup.style.display = "block";
+
+			setTimeout(function() {
+				window.location.href = "source.html";
+			}, 2000); // Redirect after 2 seconds
+		}
+
+		function closePopup() {
+			var popup = document.getElementById("successPopup");
+			popup.style.display = "none";
+		}
+	</script>
+</body>
+</html>

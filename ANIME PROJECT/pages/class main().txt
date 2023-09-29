@@ -1,0 +1,18 @@
+class main()
+{
+ public static void main(string args[])
+ {
+  pie=3.14;     #global
+  int c;        #global
+  class circle
+  {
+   int r=2; #local
+   System.out.println("r=",+r);
+  }
+  class result extends circle
+  {
+   c=pie*r*r;  #static
+   System.out.println("the area of circle:",+c);
+  }
+ }	
+}
